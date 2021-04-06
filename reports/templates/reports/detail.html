@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+| {{report.name}}
+{% endblock title %}
+
+{% block content %}
+<div class="card">
+    {% if report.image %}
+    <img src="{{report.image.url}}" style="width: 70%; height: 500px" class="card-img-top" alt="{{report.name}}">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{report.name}}</h5>
+        <p class="card-text">{{report.remark}}</p>
+        <p class="card-text">Created by: {{report.author.user.username}}</p>
+        <p class="card-text">Created at: {{report.created}}</p>
+        <hr>
+        <a href="{% url 'reports:list' %}" class="btn btn-outline-info">Reports List</a>
+        <a href="{% url 'reports:pdf' report.pk %}" class="btn btn-outline-danger">PDF</a>
+    </div>
+</div>
+{% endblock content %}

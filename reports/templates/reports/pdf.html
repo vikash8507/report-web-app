@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+| {{report.name|title}}
+{% endblock title %}
+
+{% block style %}
+<style>
+    h2 {
+        font-size: 18px;
+        color: red;
+    }
+
+    p {
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: green;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+
+<h2 align="center">{{report.name}}</h2>
+
+<hr color='blue' size='3'>
+<img src="{{report.image.path}}" alt="{{report.name}}">
+
+<h2>Remarks: </h2>
+<p>{{report.remark}}</p>
+<hr color='blue' size='3'>
+<br>
+<p>Author: <b>{{report.author.user.username}}</b></p>
+<p>Created: <b>{{report.created}}</b></p>
+
+{% endblock content %}

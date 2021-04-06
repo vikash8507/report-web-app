@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+| Login
+{% endblock title %}
+
+{% block content %}
+
+<div class="col-sm-6 offset-3">
+    <h2 class="alert alert-info text-center">Login for further process</h2>
+    {% if err_msg %}
+    <div class="alert alert-danger">
+        {{err_msg}}
+    </div>
+    {% endif %}
+
+    <form action="" method="POST" novalidate class='p-3 border border-1'>
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" value="Login" class='btn btn-outline-info mt-2'>
+    </form>
+
+</div>
+
+
+{% endblock content %}

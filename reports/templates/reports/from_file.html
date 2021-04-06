@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+| Upload CSV Files
+{% endblock title %}
+
+{% block style %}
+<style>
+    .dz-remove {
+        color: red;
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+</style>
+{% endblock style %}
+
+{% block scripts %}
+<script src="{% static 'reports/upload.js' %}" defer></script>
+{% endblock scripts %}
+
+{% block content %}
+<h4 class='text-center'>Upload your sale files</h4>
+<div id="alert-box"></div>
+<br>
+<form id="my-dropzone" class="dropzone dz">
+    {% csrf_token %}
+    <div class="fallback">
+        <input type="file" name="file" id="" multiple />
+    </div>
+</form>
+{% endblock content %}

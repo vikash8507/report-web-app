@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+| Reports
+{% endblock title %}
+
+{% block content %}
+{% for report in reports %}
+<div class="card" height='50'>
+    {% if report.image %}
+    <img src="{{report.image.url}}" style="width: 70%; height: 500px" class="card-img-top" alt="{{report.name}}">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{report.name}}</h5>
+        <p class="card-text">{{report.remark|truncatewords:1}}</p>
+        <a href="{{report.get_absolute_url}}" class="btn btn-outline-info">Detail</a>
+        <a href="{% url 'reports:pdf' report.pk %}" class="btn btn-outline-danger">PDF</a>
+    </div>
+</div>
+<br>
+{% endfor %}
+{% endblock content %}
